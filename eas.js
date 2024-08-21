@@ -13,6 +13,10 @@ const createGrid = (numberOfGrids) => {
             gridBox.classList.add('grid-box');
             gridBox.style.width = `${square}px`;
             gridBox.style.height = `${square}px`;
+
+            gridBox.addEventListener('mouseenter', () => {
+                gridBox.style.backgroundColor = 'black';
+            }); 
             row.appendChild(gridBox);
         }
         container.appendChild(row);
@@ -20,3 +24,15 @@ const createGrid = (numberOfGrids) => {
 }
 
 createGrid(sizeOfGrid);
+
+//another way
+//has to be created after createGrid function called so boxes can be drawn to DOM first
+
+/* const allDivs = document.querySelectorAll('.grid-box');
+        allDivs.forEach(div => {
+            div.addEventListener('mouseenter', () => {
+                div.style.backgroundColor = 'black';
+            })
+        }); */
+    // gives nodelist of all the elements
+    //even if there is only 1 element still a node list and would need allDivs[0]
