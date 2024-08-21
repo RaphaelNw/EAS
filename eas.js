@@ -1,14 +1,17 @@
-let sizeOfGrid = 16;
+
 const container = document.querySelector("#container");
 const promptButton = document.querySelector('button');
 
 const createGrid = (numberOfGrids) => {
+    const oGGrid = document.createElement('div');
+    oGGrid.classList.add('oGGrid');
+    
     for(let i = 0; i < numberOfGrids; i++) {
         const row = document.createElement('div');
         row.classList.add('grid-row');
 
         for(let j = 0; j < numberOfGrids; j++){
-            const square = 1000 / sizeOfGrid;
+            const square = 1000 / numberOfGrids;
             const gridBox = document.createElement('div');
             gridBox.classList.add('grid-box');
             gridBox.style.width = `${square}px`;
@@ -19,24 +22,28 @@ const createGrid = (numberOfGrids) => {
             }); 
             row.appendChild(gridBox);
         }
-        container.appendChild(row);
+        oGGrid.appendChild(row);
     }
+    container.appendChild(oGGrid);
 }
+let sizeOfGrid = 16;
 createGrid(sizeOfGrid);
 
 promptButton.addEventListener('click', () => { 
+
     let userInput = parseInt(prompt('What size grid do you want?'), 10);
     // Display the prompt when the button is clicked 
     while (userInput > 100) {
     userInput = parseInt(prompt('What size grid do you want? (hint: 100 or less)'), 10); 
-    console. log(userInput); 
+    console.log(userInput); 
     } 
+
+    const oGGrid = document.querySelector('.oGGrid');
+    oGGrid.remove();
+    createGrid(userInput);
     });
 
 
-//let sizeOfGrid = userInput;
-
-//createGrid(userInput);
 
 //another way
 //has to be created after createGrid function called so boxes can be drawn to DOM first
