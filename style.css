@@ -1,10 +1,12 @@
+#container {
+    width: 1000px;
+}
+
 .grid-row {
     display: flex;
 }
 
 .grid-box {
-    width: 30px;
-    height: 30px;
     border: 1px solid red;
     background-color: blanchedalmond;
 }
