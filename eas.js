@@ -1,6 +1,6 @@
-const sizeOfGrid = 16;
-
+let sizeOfGrid = 16;
 const container = document.querySelector("#container");
+const promptButton = document.querySelector('button');
 
 const createGrid = (numberOfGrids) => {
     for(let i = 0; i < numberOfGrids; i++) {
@@ -22,8 +22,21 @@ const createGrid = (numberOfGrids) => {
         container.appendChild(row);
     }
 }
-
 createGrid(sizeOfGrid);
+
+promptButton.addEventListener('click', () => { 
+    let userInput = parseInt(prompt('What size grid do you want?'), 10);
+    // Display the prompt when the button is clicked 
+    while (userInput > 100) {
+    userInput = parseInt(prompt('What size grid do you want? (hint: 100 or less)'), 10); 
+    console. log(userInput); 
+    } 
+    });
+
+
+//let sizeOfGrid = userInput;
+
+//createGrid(userInput);
 
 //another way
 //has to be created after createGrid function called so boxes can be drawn to DOM first
